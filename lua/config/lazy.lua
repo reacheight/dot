@@ -52,5 +52,6 @@ require("lazy").setup({
   },
 })
 
+vim.cmd("colorscheme tokyonight-storm")
 vim.api.nvim_set_hl(0, "LspCodeLens", { fg = "#717171", italic = true })
 vim.cmd("set mousemoveevent")
