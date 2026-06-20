@@ -22,6 +22,16 @@ return {
       dap.continue()
     end, { desc = "Start/continue debugging" })
 
+    vim.keymap.set("n", "<leader>dA", function()
+      open_repl_only()
+      dap.run({
+        type = "coreclr",
+        name = "Attach to process (full list)",
+        request = "attach",
+        processId = require("dap.utils").pick_process,
+      })
+    end, { desc = "Attach to process (full list)" })
+
     vim.keymap.set("n", "q", function()
       dap.close()
     end, { desc = "Stop debugging" })
