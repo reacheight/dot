@@ -1,0 +1,4 @@
+git:
+  pagers:
+    - externalDiffCommand: "C:/Users/mendaliev/AppData/Local/lazygit/pager.ps1"
+    - {}
