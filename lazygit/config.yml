@@ -1,4 +1,11 @@
+# have to use hardcoded path because lazygit on windows uses cmd and some stupid shit happens
+
 git:
   pagers:
     - {}
     - externalDiffCommand: "C:/Users/mendaliev/AppData/Local/lazygit/pager.ps1"
+
+os:
+  edit: 'pwsh -NoProfile -File "C:\Users\mendaliev\AppData\Local\lazygit\edit_nvim_remote.ps1" {{filename}}'
+  editAtLine: 'pwsh -NoProfile -File "C:\Users\mendaliev\AppData\Local\lazygit\edit_nvim_remote.ps1" {{filename}} {{line}}'
+  openDirInEditor: 'pwsh -NoProfile -File "C:\Users\mendaliev\AppData\Local\lazygit\edit_nvim_remote.ps1" {{dir}}'
