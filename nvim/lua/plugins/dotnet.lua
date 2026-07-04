@@ -12,6 +12,7 @@ return {
         neotest_integration = true,
         viewmode = "split",
       },
+      picker = "snacks",
     })
   end,
 }
