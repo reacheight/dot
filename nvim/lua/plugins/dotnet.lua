@@ -9,7 +9,6 @@ return {
       },
       test_runner = {
         auto_start_testrunner = false,
-        neotest_integration = true,
         viewmode = "split",
       },
       picker = "snacks",
