@@ -6,6 +6,7 @@ return {
       lsp = {
         easy_dotnet_extension_enabled = true,
         enhanced_rename = true,
+        roslynator_enabled = false,
       },
       test_runner = {
         auto_start_testrunner = false,
