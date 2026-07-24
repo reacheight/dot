@@ -8,7 +8,7 @@ return {
   },
   keys = {
     {
-      "<leader>i",
+      "<leader>e",
       mode = { "n", "v" },
       "<cmd>Yazi<cr>",
       desc = "Open yazi at the current file",
