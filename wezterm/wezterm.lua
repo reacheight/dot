@@ -38,10 +38,19 @@ return {
 		bottom = 0,
 	},
 
+	leader = { key = "Space", mods = "SHIFT", timeout_milliseconds = 1500 },
+
 	keys = {
-		{ key = "q", mods = "CTRL|SHIFT", action = act.QuitApplication },
-		{ key = "m", mods = "CTRL|SHIFT", action = act.Hide },
-		{ key = "f", mods = "CTRL|SHIFT", action = act.ToggleFullScreen },
+		{ key = "Space", mods = "SHIFT", action = act.DisableDefaultAssignment },
+		{ key = "q", mods = "LEADER", action = act.QuitApplication },
+		{ key = "m", mods = "LEADER", action = act.Hide },
+		{ key = "f", mods = "LEADER", action = act.ToggleFullScreen },
+		{ key = "h", mods = "LEADER|SHIFT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+		{ key = "v", mods = "LEADER|SHIFT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+		{ key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
+		{ key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
+		{ key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
+		{ key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
 	},
 
 	mouse_bindings = {
