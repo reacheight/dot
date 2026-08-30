@@ -20,3 +20,16 @@ New-Link "$HOME\.wezterm.lua"          "$dotfiles\wezterm\wezterm.lua"
 New-Link "$HOME\tokyonight_moon.toml"  "$dotfiles\wezterm\tokyonight_moon.toml"
 
 New-Link "$env:LOCALAPPDATA\lazygit\config.yml" "$dotfiles\lazygit\config.yml"
+
+# todo:
+# git
+# git config name and email
+# lazygit
+# wezterm
+# powershell 7
+# neovim
+# fonts (maple, jetbrains mono, nerds)
+# yazi and deps
+# winlibs.com
+# oh-my-posh
+# fnm
