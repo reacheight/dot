@@ -8,10 +8,10 @@ function New-Link($path, $target) {
   Write-Host "Linked: $path" -ForegroundColor Green
 }
 
-New-Link "$HOME\OneDrive\Документы\PowerShell\Microsoft.PowerShell_profile.ps1" `
+New-Link "$HOME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1" `
          "$dotfiles\powershell\Microsoft.PowerShell_profile.ps1"
 
-New-Link "$HOME\OneDrive\Документы\PowerShell\aliens.omp.json" `
+New-Link "$HOME\Documents\PowerShell\aliens.omp.json" `
          "$dotfiles\powershell\aliens.omp.json"
 
 New-Link "$env:LOCALAPPDATA\nvim" "$dotfiles\nvim"
