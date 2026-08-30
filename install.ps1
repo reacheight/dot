@@ -19,7 +19,4 @@ New-Link "$env:LOCALAPPDATA\nvim" "$dotfiles\nvim"
 New-Link "$HOME\.wezterm.lua"          "$dotfiles\wezterm\wezterm.lua"
 New-Link "$HOME\tokyonight_moon.toml"  "$dotfiles\wezterm\tokyonight_moon.toml"
 
-# make sure config file has correct hardcoded paths of ps scripts
 New-Link "$env:LOCALAPPDATA\lazygit\config.yml" "$dotfiles\lazygit\config.yml"
-New-Link "$env:LOCALAPPDATA\lazygit\pager.ps1" "$dotfiles\lazygit\pager.ps1"
-New-Link "$env:LOCALAPPDATA\lazygit\edit_nvim_remote.ps1" "$dotfiles\lazygit\edit_nvim_remote.ps1"
