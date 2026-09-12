@@ -152,9 +152,12 @@ set_login_shell_fish() {
 }
 
 link_configs() {
-  log "Linking nvim and lazygit configs"
+  log "Linking nvim, lazygit, ghostty, and fish configs"
   link "$HOME/.config/nvim" "$DOTFILES/nvim"
   link "$HOME/.config/lazygit" "$DOTFILES/lazygit"
+  link "$HOME/.config/ghostty" "$DOTFILES/ghostty"
+  # Link only config.fish so fish can still write fish_variables locally.
+  link "$HOME/.config/fish/config.fish" "$DOTFILES/fish/config.fish"
 }
 
 main() {

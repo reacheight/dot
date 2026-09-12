@@ -1,0 +1,10 @@
+# Fonts match wezterm: JetBrains Mono for regular/bold, Maple for italics.
+# Maple Mono NF is also a fallback so nerd icons work in nvim/yazi/lazygit.
+font-family = JetBrains Mono
+font-family = Maple Mono NF
+
+font-family-italic = Maple Mono NF
+font-style-italic = Italic
+
+font-family-bold-italic = Maple Mono NF
+font-style-bold-italic = Bold Italic
