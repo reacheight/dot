@@ -84,9 +84,12 @@ link() {
 }
 
 configure_git() {
-  log "Setting git user.name and user.email"
+  log "Setting git user.name, user.email, and delta pager"
   git config --global user.name "$GIT_NAME"
   git config --global user.email "$GIT_EMAIL"
+  git config --global core.pager delta
+  git config --global interactive.diffFilter "delta --color-only"
+  git config --global delta.navigate true
 }
 
 install_packages() {
@@ -101,7 +104,7 @@ install_packages() {
 
   log "Installing nvim, ghostty, fish, lazygit, yazi, JetBrains Mono, and extras"
   run_root dnf install -y \
-    neovim ghostty fish lazygit yazi \
+    neovim ghostty fish lazygit yazi git-delta \
     jetbrains-mono-fonts unzip curl fontconfig \
     ffmpeg-free jq poppler-utils fd-find ripgrep fzf zoxide wl-clipboard
 
@@ -109,7 +112,7 @@ install_packages() {
   run_root dnf install -y 7zip || run_root dnf install -y p7zip p7zip-plugins
 
   local cmd
-  for cmd in nvim ghostty fish lazygit yazi jq fd rg fzf zoxide ffmpeg wl-copy pdftotext; do
+  for cmd in nvim ghostty fish lazygit yazi delta jq fd rg fzf zoxide ffmpeg wl-copy pdftotext; do
     command -v "$cmd" >/dev/null || die "$cmd is not on PATH after install"
   done
   command -v 7z >/dev/null || command -v 7za >/dev/null || die "7z is not on PATH after install"
@@ -160,12 +163,44 @@ link_configs() {
   link "$HOME/.config/fish/config.fish" "$DOTFILES/fish/config.fish"
 }
 
+ghostty_desktop_id() {
+  local candidate
+  for candidate in com.mitchellh.ghostty.desktop ghostty.desktop; do
+    if [[ -f "/usr/share/applications/$candidate" || -f "$HOME/.local/share/applications/$candidate" ]]; then
+      printf '%s\n' "$candidate"
+      return 0
+    fi
+  done
+  printf '%s\n' "com.mitchellh.ghostty.desktop"
+}
+
+set_default_terminal() {
+  local desktop_id
+  desktop_id=$(ghostty_desktop_id)
+  log "Setting Ghostty as the default terminal ($desktop_id)"
+
+  mkdir -p "$HOME/.config"
+  printf '%s\n' "$desktop_id" >"$HOME/.config/xdg-terminals.list"
+  printf '%s\n' "$desktop_id" >"$HOME/.config/gnome-xdg-terminals.list"
+
+  run_root dnf install -y xdg-terminal-exec >/dev/null 2>&1 || true
+
+  if command -v gsettings >/dev/null; then
+    gsettings set org.gnome.desktop.default-applications.terminal exec ghostty \
+      && gsettings set org.gnome.desktop.default-applications.terminal exec-arg "-e" \
+      || warn "Could not update GNOME terminal gsettings"
+  else
+    warn "gsettings not found; wrote xdg-terminals.list only"
+  fi
+}
+
 main() {
   require_fedora
   configure_git
   install_packages
   install_maple_nf
   set_login_shell_fish
+  set_default_terminal
   link_configs
   log "Done."
 }
