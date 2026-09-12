@@ -1,4 +1,3 @@
-# Fonts match wezterm: JetBrains Mono for regular/bold, Maple for italics.
 # Maple Mono NF is also a fallback so nerd icons work in nvim/yazi/lazygit.
 font-family = JetBrains Mono
 font-family = Maple Mono NF
@@ -11,16 +10,9 @@ font-style-bold-italic = Bold Italic
 
 theme = TokyoNight Moon
 
-# Match wezterm's decoration-less window (RESIZE-only, no tab bar).
-# On GNOME, Super+drag (or Alt+drag) moves a frameless window.
 window-decoration = none
 window-show-tab-bar = never
 
-# Always start fish, even if this GNOME session still has SHELL=bash.
-command = fish
-
-# WezTerm leader was Shift+Space. Ghostty sequences wait until the next key
-# (no 1.5s timeout). Leader+m (hide window) has no Ghostty equivalent on Linux.
 keybind = shift+space>q=quit
 keybind = shift+space>f=toggle_fullscreen
 keybind = shift+space>shift+h=new_split:right
