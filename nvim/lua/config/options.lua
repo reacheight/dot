@@ -11,3 +11,5 @@ vim.opt.shiftwidth = 4
 
 vim.opt.endofline = false
 vim.opt.fixendofline = false
+
+vim.opt.clipboard = "unnamedplus"
