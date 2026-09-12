@@ -1,18 +1,27 @@
+# fonts
 # Maple Mono NF is also a fallback so nerd icons work in nvim/yazi/lazygit.
 font-family = JetBrains Mono
 font-family = Maple Mono NF
-
 font-family-italic = Maple Mono NF
 font-style-italic = Italic
-
 font-family-bold-italic = Maple Mono NF
 font-style-bold-italic = Bold Italic
+adjust-underline-position = 4
 
+# appearance
 theme = TokyoNight Moon
 
 window-decoration = none
 window-show-tab-bar = never
 
+window-padding-x = 4
+window-padding-y = 4
+window-padding-balance = true
+
+window-height = 30
+window-width = 120
+
+# keybindings
 keybind = shift+space>q=quit
 keybind = shift+space>f=toggle_fullscreen
 keybind = shift+space>shift+h=new_split:right
