@@ -8,3 +8,10 @@ font-style-italic = Italic
 
 font-family-bold-italic = Maple Mono NF
 font-style-bold-italic = Bold Italic
+
+theme = TokyoNight Moon
+
+# Match wezterm's decoration-less window (RESIZE-only, no tab bar).
+# On GNOME, Super+drag (or Alt+drag) moves a frameless window.
+window-decoration = none
+window-show-tab-bar = never
