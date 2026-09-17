@@ -16,9 +16,12 @@ else
   GREEN= YELLOW= RED= RESET=
 fi
 
-log()  { printf '%s==>%s %s\n' "$GREEN" "$RESET" "$*"; }
+log() { printf '%s==>%s %s\n' "$GREEN" "$RESET" "$*"; }
 warn() { printf '%s==>%s %s\n' "$YELLOW" "$RESET" "$*"; }
-die()  { printf '%serror:%s %s\n' "$RED" "$RESET" "$*" >&2; exit 1; }
+die() {
+  printf '%serror:%s %s\n' "$RED" "$RESET" "$*" >&2
+  exit 1
+}
 
 run_root() {
   if [[ ${EUID:-$(id -u)} -eq 0 ]]; then
@@ -161,6 +164,7 @@ link_configs() {
   link "$HOME/.config/ghostty" "$DOTFILES/ghostty"
   # Link only config.fish so fish can still write fish_variables locally.
   link "$HOME/.config/fish/config.fish" "$DOTFILES/fish/config.fish"
+  link "$HOME/.config/yazi" "$DOTFILES/yazi"
 }
 
 ghostty_desktop_id() {
@@ -186,9 +190,9 @@ set_default_terminal() {
   run_root dnf install -y xdg-terminal-exec >/dev/null 2>&1 || true
 
   if command -v gsettings >/dev/null; then
-    gsettings set org.gnome.desktop.default-applications.terminal exec ghostty \
-      && gsettings set org.gnome.desktop.default-applications.terminal exec-arg "-e" \
-      || warn "Could not update GNOME terminal gsettings"
+    gsettings set org.gnome.desktop.default-applications.terminal exec ghostty &&
+      gsettings set org.gnome.desktop.default-applications.terminal exec-arg "-e" ||
+      warn "Could not update GNOME terminal gsettings"
   else
     warn "gsettings not found; wrote xdg-terminals.list only"
   fi
