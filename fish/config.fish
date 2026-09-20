@@ -22,3 +22,6 @@ function y
     end
     rm -f -- "$tmp"
 end
+
+# Pi
+fish_add_path "$HOME/.local/bin"
