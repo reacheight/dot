@@ -178,33 +178,12 @@ ghostty_desktop_id() {
   printf '%s\n' "com.mitchellh.ghostty.desktop"
 }
 
-set_default_terminal() {
-  local desktop_id
-  desktop_id=$(ghostty_desktop_id)
-  log "Setting Ghostty as the default terminal ($desktop_id)"
-
-  mkdir -p "$HOME/.config"
-  printf '%s\n' "$desktop_id" >"$HOME/.config/xdg-terminals.list"
-  printf '%s\n' "$desktop_id" >"$HOME/.config/gnome-xdg-terminals.list"
-
-  run_root dnf install -y xdg-terminal-exec >/dev/null 2>&1 || true
-
-  if command -v gsettings >/dev/null; then
-    gsettings set org.gnome.desktop.default-applications.terminal exec ghostty &&
-      gsettings set org.gnome.desktop.default-applications.terminal exec-arg "-e" ||
-      warn "Could not update GNOME terminal gsettings"
-  else
-    warn "gsettings not found; wrote xdg-terminals.list only"
-  fi
-}
-
 main() {
   require_fedora
   configure_git
   install_packages
   install_maple_nf
   set_login_shell_fish
-  set_default_terminal
   link_configs
   log "Done."
 }
