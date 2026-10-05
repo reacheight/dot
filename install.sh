@@ -109,7 +109,8 @@ install_packages() {
   run_root dnf install -y \
     neovim ghostty fish lazygit yazi git-delta \
     jetbrains-mono-fonts unzip curl fontconfig \
-    ffmpeg-free jq poppler-utils fd-find ripgrep fzf zoxide wl-clipboard
+    ffmpeg-free jq poppler-utils fd-find ripgrep fzf zoxide wl-clipboard \
+    dotnet-sdk-10.0
 
   # Fedora currently ships 7-Zip as `7zip`; older releases used `p7zip`.
   run_root dnf install -y 7zip || run_root dnf install -y p7zip p7zip-plugins
